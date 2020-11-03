@@ -1,44 +1,291 @@
-// Imports
+/**
+Import styles
+*/
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import 'variables';
-@import '~bootstrap/scss/bootstrap';
 
-// Global
-.accent {
-  color: $accent;
+/**
+Global styles
+*/
+* {
+  color: $medium-grey;
 }
 
-// Styles
 html, body {
-  min-height: 100vh;
+  background: #edeceb;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.btn {
+  background: $medium-grey;
+  color: #fff;
+
+  &:hover, &:active, &:focus {
+    color: $light-grey;
+    outline: none !important;
+  }
+}
+
+.btn-cancel {
+  background: none;
+  color: $medium-grey;
+
+  &:hover, &:active, &:focus {
+    color: $medium-grey;
+    outline: none !important;
+  }
+}
+
+.btn-delete {
+  background: red;
+}
+
+.btn-fa {
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  transition: all .1s linear !important;
+  width: 35px;
+
+  &:hover {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+  }
+}
+
+.popover-link {
+  margin-left: 5px;
+
+  i {
+    color: $accent;
+  }
+}
+
+.popover {
+  width: 300px;
 }
 
 .navbar {
-  background-color: $dark;
+  background-color: $dark-grey;
+  border-width: 0;
 
   .navbar-brand {
     color: #fff;
+
+    i {
+      font-size: 20px;
+    }
   }
   
   .nav-item {
     &:hover, &.active {
-      height: 40px;
-      border-bottom: 3px solid $accent;
+      border-bottom: 4px solid $accent;
+      height: 50px;
     }
 
     a {
+      background: none !important;
+      color: #fff !important;
+    }
+  }
+
+  .nav-user {
+    color: #fff;
+    text-align: right;
+    line-height: 48px;
+    padding-right: 0;
+
+    .user-avatar {
+      border-radius: 50%;
+      cursor: pointer;
+      margin-left: 10px;
+      margin-top: -4px;
+      width: 30px;
+    }
+
+    .user-name {
       color: #fff;
+      display: inline-block;
+
+      a {
+        font-size: 17px;
+        margin-right: 17px;
+        text-decoration: none;
+
+        i {
+          vertical-align: middle;
+        }
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .dropdown {
+    display: inline-block;
+
+    .dropdown-item {
+      color: $dark-grey !important;
+    }
+
+    .dropdown-menu {
+      padding: 10px;
+
+      .dropdown-item {
+        border-radius: 4px;
+        display: block;
+        line-height: 30px;
+        padding-left: 10px;
+        text-decoration: none;
+
+        &:hover {
+          background: $hover;
+        }
+
+        i {
+          width: 20px;
+        }
+      }
+    }
+  }
+
+  .btn-login {
+    background-color: $accent;
+    margin-top: 8px;
+    width: 70px;
+  }
+}
+
+.nav-tabs {
+  li > a {
+    color: $medium-grey;
+  }
+
+  .active {
+    color: $dark-grey;
+  }
+}
+
+.tab-content {
+  padding: 15px;
+}
+
+.content {
+  padding-top: 66px;
+}
+
+.panel {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.10);
+  padding: 25px;
+
+  .panel-header {
+    font-size: 15px;
+    margin-bottom: 20px;
+
+    .header-icon {
+      font-size: 17px;
+      margin-right: 5px;
+    }
+
+    small {
+      display: block;
+      font-size: 13px;
+      padding: 5px 0;
+      text-align: left;
     }
   }
 }
 
-.content {
-  flex: 1;
-  padding-top: 55px;
+.modal {
+  .modal-body {
+    padding: 25px;
+
+    h4 {
+      border-bottom: 1px solid $light-grey;
+      padding-bottom: 10px;
+    }
+  }
 }
 
-footer {
-  background-color: $dark;
-  color: #fff;
-  line-height: 50px;
+table {
+  font-size: 13px !important;
+
+  th {
+    color: $medium-grey;
+    padding: 0 10px 8px 10px !important;
+  }
+
+  td {
+    border-top: 1px solid $light-grey !important;
+    padding: 12px !important;
+    vertical-align: middle !important;
+
+    &.td-actions {
+      padding: 4px 12px !important;
+    }
+  }
+}
+
+/**
+Trading bots view page
+*/
+.profit-chart-select {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  height: 26px;
+  padding: 2px 12px;
+  width: 150px;
+}
+
+.table-bots {
+  tr {
+    &.hover {
+      cursor: pointer;
+    }
+
+    &.selected {
+      background: #f0f0f0;
+    }
+  }
+
+  code {
+    display: inline-block;
+    padding: 2px 5px;
+    min-width: 90px;
+    text-align: center;
+  }
+
+  code.buy {
+    color: #2d8c42;
+    background-color: #e3f1e6;
+    border-color: #c3e6cb;
+  }
+
+  code.sell {
+    color: #d23c4a;
+    background-color: #f9e9eb;
+    border-color: #f5c6cb;
+  }
+}
+
+.bot-form {
+  .next-run {
+    margin-top: 5px;
+  }
+}
+
+/**
+Profile view page
+*/
+.profile {
+  .user-avatar {
+    border-radius: 50%;
+    width: 150px;
+  }
 }

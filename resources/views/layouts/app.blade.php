@@ -8,39 +8,73 @@
 
         @yield('meta')
 
-        <title>@yield('title')</title>
+        <title>fulcrum | @yield('title')</title>
 
         {{-- Styles --}}
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         @stack('styles')
     </head>
-    <body class="d-flex flex-column">
-        <nav class="navbar fixed-top navbar-expand-lg">
-            <div class="container">
-                <div class="collapse navbar-collapse">
-                    <a class="navbar-brand" href="{{ route('view.index') }}">Laravel Template</a>
-                    <ul class="navbar-nav">
-                        <li class="nav-item @if (Request::is('/test/*')) active @endif">
-                            <a class="nav-link" href="#">Link 1</a>
-                        </li>
-                    </ul>
+    <body>
+        <nav class="navbar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="col-md-2 col-sm-2">
+                    <a href="{{ route('welcome.view') }}" class="navbar-brand">
+                        <i class="fab fa-fulcrum color-accent"></i> fulcrum
+                    </a>
                 </div>
+
+                @auth
+                    <div class="col-md-7 col-sm-6">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item @if (Request::is('bots')) active @endif">
+                                <a href="{{ route('bots.view') }}" class="nav-link">Bots</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 nav-user">
+                        <p class="user-name">{{ Auth::user()->name }}</p>
+
+                        <div class="dropdown">
+                            <p data-toggle="dropdown">
+                                <img class="user-avatar" src="{{ Auth::user()->avatar_url }}">
+                            </p>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="{{ route('profile.view') }}">
+                                    <i class="fas fa-user color-accent"></i> Profile
+                                </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}">
+                                    <i class="fas fa-sign-out-alt color-accent"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endauth
+                @guest
+                    <div class="col-md-10">
+                        <a href="{{ route('login') }}" class="btn btn-login pull-right">Login</a>
+                    </div>
+                @endguest
             </div>
         </nav>
 
-        <div class="content">
+        <div class="content" id="app">
             @yield('content')
+
+            @stack('modals')
         </div>
 
-        <footer>
-            <div class="container text-center">
-                Laravel Template
-            </div>
-        </footer>
-
         {{-- Scripts --}}
-        <script src="{{ asset('js/app.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('[data-toggle="popover"]').popover();
+            });
+        </script>
 
         @stack('scripts')
     </body>

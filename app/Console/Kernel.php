@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Console\Commands\SendNotifications;
+use App\Console\Commands\UpdateBalanceTicks;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,18 +15,21 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-
+        UpdateBalanceTicks::class,
+        SendNotifications::class
     ];
 
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param  \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
     {
-
+        $schedule->command('update:balance-ticks', ['interval' => 'D'])->hourly();
+        $schedule->command('update:balance-ticks', ['interval' => 'M'])->daily();
+        $schedule->command('send:notifications')->everyMinute();
     }
 
     /**

@@ -1,0 +1,73 @@
+@import 'variables';
+
+.header {
+  color: #fff;
+  margin-top: 15px;
+  position: absolute;
+  width: 100%;
+
+  h4 {
+    color: $light-grey;
+  }
+
+  i {
+    font-size: 80px;
+  }
+
+  a {
+    background: $accent;
+  }
+}
+
+.particle-overlay {
+  background: $dark-grey;
+  margin-top: -30px;
+  height: 400px;
+  width: 100%;
+
+  #particles-js {
+    height: 350px;
+  }
+}
+
+.info-boxes {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.10);
+  margin-top: -50px;
+  padding: 10px 20px 30px 20px;
+
+  .divider {
+    background: $accent;
+    height: 2px;
+    margin: auto auto 15px;
+    width: 40px;
+  }
+
+  .info-box {
+    border-radius: 4px;
+    padding: 10px 15px;
+
+    .info-header {
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+
+    i {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+#request-access {
+  margin: 20px -15px 30px -15px;
+
+  .panel-header {
+    margin-bottom: 10px;
+  }
+
+  button {
+    margin-top: 25px;
+  }
+}

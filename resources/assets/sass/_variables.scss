@@ -1,3 +1,22 @@
 
-$dark: #424242;
-$accent: #1DE9B6;
+$dark-grey: #3c3c3c;
+$medium-grey: #616161;
+$light-grey: #ddd;
+$hover: #f0f0f0;
+$accent: #27d8ac;
+
+$red: #ff5000;
+$green: #05b309;
+
+// Variable classes
+.color-accent, .color-accent * {
+  color: $accent;
+}
+
+.color-red, .color-red * {
+  color: $red;
+}
+
+.color-green, .color-green * {
+  color: $green;
+}

@@ -92,4 +92,6 @@ return [
             'expire' => 60,
         ],
     ],
+
+    'admins' => explode(',',  env('ADMIN_EMAILS'))
 ];
