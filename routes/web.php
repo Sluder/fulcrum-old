@@ -14,6 +14,10 @@ Route::group(['middleware' => ['web']], function () {
      * Authenticated user routes
      */
     Route::group(['middleware' => ['auth']], function () {
+        Route::get('/access-requests', 'PageController@accessRequests')->name('access-requests.view');
+        Route::post('/access-requests/{access_request}', 'Auth\AuthController@accessRequestReview')->name('request-access.review');
+
+
         /**
          * User profile routes
          */
@@ -36,6 +40,9 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('/{bot}/update', 'TradeBotController@update')->name('update');
             Route::get('/{bot}/form', 'TradeBotController@form')->name('form');
             Route::get('/{bot}/balance-ticks', 'TradeBotController@getBalanceTicks');
+            Route::get('/{bot}/pause', 'TradeBotController@pause');
+            Route::get('/{bot}/unpause', 'TradeBotController@unPause');
+            Route::get('/{bot}/logs', 'TradeBotController@logs')->name('logs');
         });
     });
 });

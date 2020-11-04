@@ -4,17 +4,17 @@ Import styles
 
 .color-accent,
 .color-accent * {
-  color: #27d8ac;
+  color: #27d8ac !important;
 }
 
 .color-red,
 .color-red * {
-  color: #ff5000;
+  color: #ff5000 !important;
 }
 
 .color-green,
 .color-green * {
-  color: #05b309;
+  color: #05b309 !important;
 }
 
 /**
@@ -43,6 +43,14 @@ body {
   outline: none !important;
 }
 
+.btn.bg-green {
+  background: #05b309;
+}
+
+.btn.bg-red {
+  background: #ff5000;
+}
+
 .btn-cancel {
   background: none;
   color: #616161;
@@ -53,10 +61,6 @@ body {
 .btn-cancel:focus {
   color: #616161;
   outline: none !important;
-}
-
-.btn-delete {
-  background: red;
 }
 
 .btn-fa {
@@ -155,6 +159,7 @@ body {
 }
 
 .navbar .dropdown .dropdown-menu {
+  margin-top: 0;
   padding: 10px;
 }
 
@@ -228,6 +233,37 @@ body {
   padding-bottom: 10px;
 }
 
+.dropdown-menu {
+  line-height: 20px;
+  margin-top: 30px;
+  padding: 10px 0;
+}
+
+.dropdown-menu .dropdown-item {
+  color: #3c3c3c;
+  display: inline-block;
+  line-height: 25px;
+  padding-left: 15px;
+  text-decoration: none;
+  width: 100%;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.dropdown-menu .dropdown-item i {
+  color: #27d8ac;
+  width: 20px;
+}
+
+.dropdown-menu .divider {
+  background: none;
+  border-top: 1px solid #f0f0f0;
+  margin: 5px;
+}
+
 table {
   font-size: 13px !important;
 }
@@ -245,6 +281,18 @@ table td {
 
 table td.td-actions {
   padding: 4px 12px !important;
+}
+
+.pagination-container {
+  text-align: right;
+}
+
+.pagination-container .pagination {
+  margin-bottom: 0;
+}
+
+.pagination-container .pagination i {
+  color: #fff;
 }
 
 /**

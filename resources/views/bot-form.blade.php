@@ -133,9 +133,7 @@
 
                         <div class="text-right">
                             <a href="{{ route('bots.view') }}" type="button" class="btn btn-cancel">Cancel</a>
-                            @if(isset($bot))
-                                <a href="{{ route('bots.delete', ['bot' => $bot->id]) }}" type="button" class="btn btn-delete">Delete</a>
-                            @endif
+
                             <button type="submit" class="btn">{{ isset($bot) ? 'Update' : 'Create' }}</button>
                         </div>
                     </div>

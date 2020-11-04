@@ -46,6 +46,9 @@
                                 <a class="dropdown-item" href="{{ route('profile.view') }}">
                                     <i class="fas fa-user color-accent"></i> Profile
                                 </a>
+                                <a class="dropdown-item" href="{{ route('access-requests.view') }}">
+                                    <i class="fas fa-unlock-alt color-accent"></i> Access Requests
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}">
                                     <i class="fas fa-sign-out-alt color-accent"></i> Logout
                                 </a>

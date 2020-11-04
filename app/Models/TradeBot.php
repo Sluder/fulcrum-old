@@ -148,6 +148,14 @@ class TradeBot extends Model
     }
 
     /**
+     * Get bot notifications
+     */
+    public function notifications()
+    {
+        return $this->hasMany(TradeBotNotification::class, 'trade_bot_id');
+    }
+
+    /**
      * Calculates percentage change from amount invested
      */
     public function percentageChange()

@@ -1,16 +1,16 @@
 .color-accent,
 .color-accent * {
-  color: #27d8ac;
+  color: #27d8ac !important;
 }
 
 .color-red,
 .color-red * {
-  color: #ff5000;
+  color: #ff5000 !important;
 }
 
 .color-green,
 .color-green * {
-  color: #05b309;
+  color: #05b309 !important;
 }
 
 .header {

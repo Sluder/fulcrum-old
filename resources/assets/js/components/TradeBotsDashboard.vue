@@ -22,13 +22,13 @@
                             <th>Current $</th>
                             <th>Profit</th>
                             <th>Change</th>
-                            <th></th>
+                            <th width="100px"></th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr v-for="bot in bots" class="hover" v-bind:class="{selected: selected_bot_id === bot.id}" v-on:click="selectBot(bot)">
-                            <td>{{ ('0000' + bot.id).substr(-4, 4) }}</td>
+                        <tr v-for="bot in bots" class="hover" v-bind:class="{selected: selected_bot_id === bot.id}">
+                            <td v-on:click="selectBot(bot)">{{ ('0000' + bot.id).substr(-4, 4) }}</td>
                             <td>
                                 <code class="buy" v-if="[1, 2].includes(parseInt(bot.state.id))">{{ bot.state.name }}</code>
                                 <code class="sell" v-if="[3, 4].includes(parseInt(bot.state.id))">{{ bot.state.name }}</code>
@@ -53,9 +53,39 @@
                             </td>
 
                             <td class="td-actions">
-                                <a :href="'/bots/' + bot.id + '/form'" class="btn-fa pull-right" v-if="parseInt(bot.should_delete) === 0" title="Update bot configurations">
-                                    <i class="fas fa-cog"></i>
+                                <div class="dropdown" v-if="(parseInt(bot.should_delete) === 0)">
+                                    <a class="btn-fa pull-right dropdown-toggle" data-toggle="dropdown">
+                                        <span class="fa fa-ellipsis-v"></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a :href="'/bots/' + bot.id + '/form'" class="dropdown-item">
+                                            <i class="fas fa-cog"></i>
+                                            Settings
+                                        </a>
+                                        <a :href="'/bots/' + bot.id + '/pause'" class="dropdown-item" v-if="parseInt(bot.is_paused) === 0">
+                                            <i class="fas fa-pause"></i>
+                                            Pause
+                                        </a>
+                                        <a :href="'/bots/' + bot.id + '/unpause'" class="dropdown-item" v-if="parseInt(bot.is_paused) === 1">
+                                            <i class="fas fa-play"></i>
+                                            Resume
+                                        </a>
+                                        <a :href="'/bots/' + bot.id + '/logs'" class="dropdown-item">
+                                            <i class="fas fa-archive"></i>
+                                            Logs
+                                        </a>
+                                        <div class="divider"></div>
+                                        <a class="dropdown-item" data-toggle="modal" :data-target="'#delete-bot-' + bot.id">
+                                            <i class="fas fa-trash-alt color-red"></i>
+                                            Delete
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn-fa pull-right color-red" v-if="parseInt(bot.is_paused) === 1" title="Bot is paused for trading">
+                                    <i class="fas fa-pause color-red"></i>
                                 </a>
+
                                 <a href="#" class="btn-fa pull-right color-red" v-if="parseInt(bot.should_delete) === 1" title="Bot is scheduled for deletion">
                                     <i class="fas fa-exclamation-triangle"></i>
                                 </a>
@@ -99,10 +129,10 @@
                     <thead>
                         <tr>
                             <th width="35%">Closed</th>
-                            <th width="15%">Bought At</th>
-                            <th width="15%">Sold At</th>
+                            <th width="15%">Bought</th>
+                            <th width="15%">Sold</th>
                             <th width="15%">Profit</th>
-                            <th width="20%">Percent Profit</th>
+                            <th width="20%">Percent</th>
                         </tr>
                     </thead>
 

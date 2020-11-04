@@ -63425,6 +63425,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['trade_bots'],
@@ -63594,15 +63624,20 @@ var render = function() {
                   "tr",
                   {
                     staticClass: "hover",
-                    class: { selected: _vm.selected_bot_id === bot.id },
-                    on: {
-                      click: function($event) {
-                        return _vm.selectBot(bot)
-                      }
-                    }
+                    class: { selected: _vm.selected_bot_id === bot.id }
                   },
                   [
-                    _c("td", [_vm._v(_vm._s(("0000" + bot.id).substr(-4, 4)))]),
+                    _c(
+                      "td",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.selectBot(bot)
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(("0000" + bot.id).substr(-4, 4)))]
+                    ),
                     _vm._v(" "),
                     _c("td", [
                       [1, 2].includes(parseInt(bot.state.id))
@@ -63686,16 +63721,117 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", { staticClass: "td-actions" }, [
                       parseInt(bot.should_delete) === 0
+                        ? _c("div", { staticClass: "dropdown" }, [
+                            _vm._m(2, true),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "dropdown-menu dropdown-menu-right"
+                              },
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "dropdown-item",
+                                    attrs: { href: "/bots/" + bot.id + "/form" }
+                                  },
+                                  [
+                                    _c("i", { staticClass: "fas fa-cog" }),
+                                    _vm._v(
+                                      "\n                                        Settings\n                                    "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                parseInt(bot.is_paused) === 0
+                                  ? _c(
+                                      "a",
+                                      {
+                                        staticClass: "dropdown-item",
+                                        attrs: {
+                                          href: "/bots/" + bot.id + "/pause"
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass: "fas fa-pause"
+                                        }),
+                                        _vm._v(
+                                          "\n                                        Pause\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                parseInt(bot.is_paused) === 1
+                                  ? _c(
+                                      "a",
+                                      {
+                                        staticClass: "dropdown-item",
+                                        attrs: {
+                                          href: "/bots/" + bot.id + "/unpause"
+                                        }
+                                      },
+                                      [
+                                        _c("i", { staticClass: "fas fa-play" }),
+                                        _vm._v(
+                                          "\n                                        Resume\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "dropdown-item",
+                                    attrs: { href: "/bots/" + bot.id + "/logs" }
+                                  },
+                                  [
+                                    _c("i", { staticClass: "fas fa-archive" }),
+                                    _vm._v(
+                                      "\n                                        Logs\n                                    "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "divider" }),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "dropdown-item",
+                                    attrs: {
+                                      "data-toggle": "modal",
+                                      "data-target": "#delete-bot-" + bot.id
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fas fa-trash-alt color-red"
+                                    }),
+                                    _vm._v(
+                                      "\n                                        Delete\n                                    "
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      parseInt(bot.is_paused) === 1
                         ? _c(
                             "a",
                             {
-                              staticClass: "btn-fa pull-right",
+                              staticClass: "btn-fa pull-right color-red",
                               attrs: {
-                                href: "/bots/" + bot.id + "/form",
-                                title: "Update bot configurations"
+                                href: "#",
+                                title: "Bot is paused for trading"
                               }
                             },
-                            [_c("i", { staticClass: "fas fa-cog" })]
+                            [_c("i", { staticClass: "fas fa-pause color-red" })]
                           )
                         : _vm._e(),
                       _vm._v(" "),
@@ -63721,7 +63857,7 @@ var render = function() {
                 )
               }),
               _vm._v(" "),
-              !_vm.bots.length ? _c("tr", [_vm._m(2)]) : _vm._e()
+              !_vm.bots.length ? _c("tr", [_vm._m(3)]) : _vm._e()
             ],
             2
           )
@@ -63807,10 +63943,10 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "panel" }, [
-        _vm._m(3),
+        _vm._m(4),
         _vm._v(" "),
         _c("table", { staticClass: "table" }, [
-          _vm._m(4),
+          _vm._m(5),
           _vm._v(" "),
           _c(
             "tbody",
@@ -63887,7 +64023,7 @@ var render = function() {
                 ])
               }),
               _vm._v(" "),
-              !_vm.selected_bot_id ? _c("tr", [_vm._m(5)]) : _vm._e(),
+              !_vm.selected_bot_id ? _c("tr", [_vm._m(6)]) : _vm._e(),
               _vm._v(" "),
               _vm.selected_bot_id &&
               Object.keys(_vm.selected_bot_trades).length === 0
@@ -63956,9 +64092,22 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Change")]),
         _vm._v(" "),
-        _c("th")
+        _c("th", { attrs: { width: "100px" } })
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "btn-fa pull-right dropdown-toggle",
+        attrs: { "data-toggle": "dropdown" }
+      },
+      [_c("span", { staticClass: "fa fa-ellipsis-v" })]
+    )
   },
   function() {
     var _vm = this
@@ -63985,13 +64134,13 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { width: "35%" } }, [_vm._v("Closed")]),
         _vm._v(" "),
-        _c("th", { attrs: { width: "15%" } }, [_vm._v("Bought At")]),
+        _c("th", { attrs: { width: "15%" } }, [_vm._v("Bought")]),
         _vm._v(" "),
-        _c("th", { attrs: { width: "15%" } }, [_vm._v("Sold At")]),
+        _c("th", { attrs: { width: "15%" } }, [_vm._v("Sold")]),
         _vm._v(" "),
         _c("th", { attrs: { width: "15%" } }, [_vm._v("Profit")]),
         _vm._v(" "),
-        _c("th", { attrs: { width: "20%" } }, [_vm._v("Percent Profit")])
+        _c("th", { attrs: { width: "20%" } }, [_vm._v("Percent")])
       ])
     ])
   },

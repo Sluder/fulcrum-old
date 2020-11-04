@@ -10,13 +10,13 @@ $green: #05b309;
 
 // Variable classes
 .color-accent, .color-accent * {
-  color: $accent;
+  color: $accent !important;
 }
 
 .color-red, .color-red * {
-  color: $red;
+  color: $red !important;
 }
 
 .color-green, .color-green * {
-  color: $green;
+  color: $green !important;
 }

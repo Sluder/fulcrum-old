@@ -24,6 +24,14 @@ html, body {
     color: $light-grey;
     outline: none !important;
   }
+
+  &.bg-green {
+    background: $green;
+  }
+
+  &.bg-red {
+    background: $red;
+  }
 }
 
 .btn-cancel {
@@ -34,10 +42,6 @@ html, body {
     color: $medium-grey;
     outline: none !important;
   }
-}
-
-.btn-delete {
-  background: red;
 }
 
 .btn-fa {
@@ -134,6 +138,7 @@ html, body {
     }
 
     .dropdown-menu {
+      margin-top: 0;
       padding: 10px;
 
       .dropdown-item {
@@ -212,6 +217,37 @@ html, body {
   }
 }
 
+.dropdown-menu {
+  line-height: 20px;
+  margin-top: 30px;
+  padding: 10px 0;
+
+  .dropdown-item {
+    color: $dark-grey;
+    display: inline-block;
+    line-height: 25px;
+    padding-left: 15px;
+    text-decoration: none;
+    width: 100%;
+
+    &:hover {
+      background-color: $hover;
+      cursor: pointer;
+    }
+
+    i {
+      color: $accent;
+      width: 20px;
+    }
+  }
+
+  .divider {
+    background: none;
+    border-top: 1px solid $hover;
+    margin: 5px;
+  }
+}
+
 table {
   font-size: 13px !important;
 
@@ -230,6 +266,19 @@ table {
     }
   }
 }
+
+.pagination-container {
+  text-align: right;
+
+  .pagination {
+    margin-bottom: 0;
+
+    i {
+      color: #fff;
+    }
+  }
+}
+
 
 /**
 Trading bots view page

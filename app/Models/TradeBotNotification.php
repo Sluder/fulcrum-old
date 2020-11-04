@@ -15,7 +15,7 @@ class TradeBotNotification extends Model
      * Cast attributes to Carbon instances
      */
     protected $dates = [
-        'sent_on',
+        'user_notified_on',
         'created_on'
     ];
 

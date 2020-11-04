@@ -90,7 +90,7 @@
                     </div>
                     <div class="col-md-5">
                         <label for="email">Email</label>
-                        <input type="email" name="name" class="form-control" required>
+                        <input type="email" name="email" class="form-control" required>
                     </div>
                     <div class="col-md-2 text-right">
                         <button class="btn" type="submit">Submit</button>

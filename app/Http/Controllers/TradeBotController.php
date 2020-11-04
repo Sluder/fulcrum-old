@@ -86,7 +86,8 @@ class TradeBotController extends Controller
             'buy_length_id' => $request['buy-order-length'],
             'sell_length_id' => $request['sell-order-length'],
             'last_ran' => Carbon::now(),
-            'should_delete' => false
+            'should_delete' => false,
+            'is_paused' => false
         ]);
 
         // Save indicators for trading bot
@@ -210,5 +211,43 @@ class TradeBotController extends Controller
         ])->limit($limit)->get();
 
         return json_encode($ticks);
+    }
+
+    /**
+     * View for bot logging
+     */
+    public function logs(TradeBot $bot)
+    {
+        $logs = $bot->notifications()->orderBy('created_on', 'desc')->simplePaginate(10);
+
+        return view('bot-logs', compact('bot', 'logs'));
+    }
+
+    /**
+     * Pause a bot from making orders
+     */
+    public function pause(TradeBot $bot)
+    {
+        $bot->update([
+            'is_paused' => true
+        ]);
+
+        return redirect()->route('bots.view')->with([
+            "success" => "Successfully paused bot {$bot->formattedId()}. This bot will not make any trades until un-paused"
+        ]);
+    }
+
+    /**
+     * Un-pause a bot so it can trade again
+     */
+    public function unPause(TradeBot $bot)
+    {
+        $bot->update([
+            'is_paused' => false
+        ]);
+
+        return redirect()->route('bots.view')->with([
+            "success" => "Successfully un-paused trade bot {$bot->formattedId()}. This bot will start trading again"
+        ]);
     }
 }

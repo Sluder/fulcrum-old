@@ -67,8 +67,6 @@ class AuthController extends Controller
             ]);
         }
 
-        Mail::to($request['email'])->send(new AccessRequestEmail('approved', 'test'));
-
         AccessRequest::create([
             'name' => $request['name'],
             'email' => $request['email']
@@ -87,8 +85,7 @@ class AuthController extends Controller
         if ($request->has('approve')) {
             $user = User::create([
                 'name' => $access_request->name,
-                'email' => $access_request->email,
-                'notify_by' => 'email'
+                'email' => $access_request->email
             ]);
 
             Mail::to($access_request->email)->send(new AccessRequestEmail('approved', $user->name));
@@ -97,9 +94,8 @@ class AuthController extends Controller
         }
 
         $access_request->delete();
-        AccessRequest::where('name', $access_request->name)->delete();
 
-        return redirect()->route('view.notifications')->with([
+        return redirect()->route('access-requests.view')->with([
             'success' => 'You have successfully ' . ($request->has('approve') ? 'approved' : 'denied') . " access to {$access_request->name}"
         ]);
     }
