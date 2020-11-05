@@ -85,7 +85,8 @@ class AuthController extends Controller
         if ($request->has('approve')) {
             $user = User::create([
                 'name' => $access_request->name,
-                'email' => $access_request->email
+                'email' => $access_request->email,
+                'notify_by' => 'email'
             ]);
 
             Mail::to($access_request->email)->send(new AccessRequestEmail('approved', $user->name));
