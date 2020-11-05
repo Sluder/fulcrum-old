@@ -15,3 +15,7 @@
         </trade-bots-dashboard>
     </div>
 @endsection
+
+@push('modals')
+    @each('partials.delete-bot-modal', $bots, 'bot')
+@endpush

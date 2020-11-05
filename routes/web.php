@@ -36,7 +36,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/form', 'TradeBotController@form')->name('form');
 
             Route::post('/create', 'TradeBotController@store')->name('store');
-            Route::get('/{bot}/delete', 'TradeBotController@delete')->name('delete');
+            Route::post('/{bot}/delete', 'TradeBotController@delete')->name('delete');
             Route::post('/{bot}/update', 'TradeBotController@update')->name('update');
             Route::get('/{bot}/form', 'TradeBotController@form')->name('form');
             Route::get('/{bot}/balance-ticks', 'TradeBotController@getBalanceTicks');
