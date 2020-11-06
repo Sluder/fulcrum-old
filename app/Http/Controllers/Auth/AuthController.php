@@ -90,6 +90,7 @@ class AuthController extends Controller
             ]);
 
             Mail::to($access_request->email)->send(new AccessRequestEmail('approved', $user->name));
+
         } else {
             Mail::to($access_request->email)->send(new AccessRequestEmail('denied', $access_request->name));
         }
