@@ -1,7 +1,7 @@
 @component('mail::layout')
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            <img src="{{ asset('img/fulcrum.png') }}" width="150" data-auto-embed="attachment">
+            <img src="{{ asset('img/fulcrum.png') }}" width="100" data-auto-embed="attachment">
         @endcomponent
     @endslot
 
