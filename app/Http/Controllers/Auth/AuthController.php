@@ -86,7 +86,8 @@ class AuthController extends Controller
             $user = User::create([
                 'name' => $access_request->name,
                 'email' => $access_request->email,
-                'notify_by' => 'email'
+                'notify_by' => 'email',
+                'user_avatar' => 'https://i1.wp.com/a.slack-edge.com/7fa9/img/avatars/ava_0000-512.png'
             ]);
 
             Mail::to($access_request->email)->send(new AccessRequestEmail('approved', $user->name));
