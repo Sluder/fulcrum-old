@@ -27,8 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('update:balance-ticks', ['interval' => 'D'])->hourly();
-        $schedule->command('update:balance-ticks', ['interval' => 'M'])->daily();
+        $schedule->command('update:balance-ticks D')->hourly();
+        $schedule->command('update:balance-ticks M')->daily();
         $schedule->command('send:notifications')->everyMinute();
     }
 
